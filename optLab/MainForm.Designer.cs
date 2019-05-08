@@ -59,10 +59,10 @@
             this.fxTextBox = new System.Windows.Forms.TextBox();
             this.resultGridView = new System.Windows.Forms.DataGridView();
             this.pictureBox = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.dataButton = new System.Windows.Forms.Button();
             this.addResultTextBox = new System.Windows.Forms.TextBox();
             this.addResultLabel = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.levelsButton = new System.Windows.Forms.Button();
             this.hjX1TextBox = new System.Windows.Forms.TextBox();
             this.hjX2TextBox = new System.Windows.Forms.TextBox();
             this.hjX1Label = new System.Windows.Forms.Label();
@@ -251,7 +251,7 @@
             // addInfoLabel
             // 
             this.addInfoLabel.AutoSize = true;
-            this.addInfoLabel.Location = new System.Drawing.Point(9, 364);
+            this.addInfoLabel.Location = new System.Drawing.Point(4, 367);
             this.addInfoLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.addInfoLabel.Name = "addInfoLabel";
             this.addInfoLabel.Size = new System.Drawing.Size(0, 13);
@@ -260,7 +260,7 @@
             // 
             // addInfoTextBox
             // 
-            this.addInfoTextBox.Location = new System.Drawing.Point(56, 362);
+            this.addInfoTextBox.Location = new System.Drawing.Point(56, 364);
             this.addInfoTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.addInfoTextBox.Name = "addInfoTextBox";
             this.addInfoTextBox.Size = new System.Drawing.Size(48, 20);
@@ -270,24 +270,22 @@
             // upBorderLabel
             // 
             this.upBorderLabel.AutoSize = true;
-            this.upBorderLabel.Location = new System.Drawing.Point(4, 341);
+            this.upBorderLabel.Location = new System.Drawing.Point(4, 343);
             this.upBorderLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.upBorderLabel.Name = "upBorderLabel";
             this.upBorderLabel.Size = new System.Drawing.Size(49, 13);
             this.upBorderLabel.TabIndex = 16;
             this.upBorderLabel.Text = "Верхняя";
-            this.upBorderLabel.Visible = false;
             // 
             // botBorderLabel
             // 
             this.botBorderLabel.AutoSize = true;
-            this.botBorderLabel.Location = new System.Drawing.Point(4, 318);
+            this.botBorderLabel.Location = new System.Drawing.Point(4, 319);
             this.botBorderLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.botBorderLabel.Name = "botBorderLabel";
             this.botBorderLabel.Size = new System.Drawing.Size(47, 13);
             this.botBorderLabel.TabIndex = 17;
             this.botBorderLabel.Text = "Нижняя";
-            this.botBorderLabel.Visible = false;
             // 
             // botBorderTextBox
             // 
@@ -296,16 +294,14 @@
             this.botBorderTextBox.Name = "botBorderTextBox";
             this.botBorderTextBox.Size = new System.Drawing.Size(48, 20);
             this.botBorderTextBox.TabIndex = 8;
-            this.botBorderTextBox.Visible = false;
             // 
             // upBorderTextBox
             // 
-            this.upBorderTextBox.Location = new System.Drawing.Point(56, 339);
+            this.upBorderTextBox.Location = new System.Drawing.Point(56, 340);
             this.upBorderTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.upBorderTextBox.Name = "upBorderTextBox";
             this.upBorderTextBox.Size = new System.Drawing.Size(48, 20);
             this.upBorderTextBox.TabIndex = 9;
-            this.upBorderTextBox.Visible = false;
             // 
             // x1TextBox
             // 
@@ -382,16 +378,16 @@
             this.pictureBox.TabIndex = 28;
             this.pictureBox.TabStop = false;
             // 
-            // button1
+            // dataButton
             // 
-            this.button1.Location = new System.Drawing.Point(499, 431);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(93, 19);
-            this.button1.TabIndex = 29;
-            this.button1.Text = "Data";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.dataButton.Location = new System.Drawing.Point(499, 425);
+            this.dataButton.Margin = new System.Windows.Forms.Padding(2);
+            this.dataButton.Name = "dataButton";
+            this.dataButton.Size = new System.Drawing.Size(92, 25);
+            this.dataButton.TabIndex = 29;
+            this.dataButton.Text = "Информация";
+            this.dataButton.UseVisualStyleBackColor = true;
+            this.dataButton.Click += new System.EventHandler(this.dataButton_Click);
             // 
             // addResultTextBox
             // 
@@ -411,63 +407,69 @@
             this.addResultLabel.TabIndex = 31;
             this.addResultLabel.Text = "Кол-во точек";
             // 
-            // button2
+            // levelsButton
             // 
-            this.button2.Location = new System.Drawing.Point(499, 455);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(93, 19);
-            this.button2.TabIndex = 32;
-            this.button2.Text = "levels";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.levelsButton.Location = new System.Drawing.Point(499, 455);
+            this.levelsButton.Name = "levelsButton";
+            this.levelsButton.Size = new System.Drawing.Size(92, 25);
+            this.levelsButton.TabIndex = 32;
+            this.levelsButton.Text = "Линии уровней";
+            this.levelsButton.UseVisualStyleBackColor = true;
+            this.levelsButton.Click += new System.EventHandler(this.levelsButton_Click);
             // 
             // hjX1TextBox
             // 
-            this.hjX1TextBox.Location = new System.Drawing.Point(56, 387);
+            this.hjX1TextBox.Location = new System.Drawing.Point(56, 389);
             this.hjX1TextBox.Name = "hjX1TextBox";
             this.hjX1TextBox.Size = new System.Drawing.Size(48, 20);
             this.hjX1TextBox.TabIndex = 33;
+            this.hjX1TextBox.Visible = false;
             // 
             // hjX2TextBox
             // 
-            this.hjX2TextBox.Location = new System.Drawing.Point(56, 413);
+            this.hjX2TextBox.Location = new System.Drawing.Point(56, 415);
             this.hjX2TextBox.Name = "hjX2TextBox";
             this.hjX2TextBox.Size = new System.Drawing.Size(48, 20);
             this.hjX2TextBox.TabIndex = 34;
+            this.hjX2TextBox.Visible = false;
             // 
             // hjX1Label
             // 
             this.hjX1Label.AutoSize = true;
-            this.hjX1Label.Location = new System.Drawing.Point(4, 390);
+            this.hjX1Label.Location = new System.Drawing.Point(4, 392);
             this.hjX1Label.Name = "hjX1Label";
             this.hjX1Label.Size = new System.Drawing.Size(18, 13);
             this.hjX1Label.TabIndex = 35;
             this.hjX1Label.Text = "x1";
+            this.hjX1Label.Visible = false;
             // 
             // hjX2Label
             // 
             this.hjX2Label.AutoSize = true;
-            this.hjX2Label.Location = new System.Drawing.Point(4, 416);
+            this.hjX2Label.Location = new System.Drawing.Point(4, 418);
             this.hjX2Label.Name = "hjX2Label";
             this.hjX2Label.Size = new System.Drawing.Size(18, 13);
             this.hjX2Label.TabIndex = 36;
             this.hjX2Label.Text = "x2";
+            this.hjX2Label.Visible = false;
             // 
             // rLabel
             // 
             this.rLabel.AutoSize = true;
-            this.rLabel.Location = new System.Drawing.Point(4, 442);
+            this.rLabel.Location = new System.Drawing.Point(4, 444);
             this.rLabel.Name = "rLabel";
             this.rLabel.Size = new System.Drawing.Size(10, 13);
             this.rLabel.TabIndex = 37;
             this.rLabel.Text = "r";
+            this.rLabel.Visible = false;
             // 
             // rTextBox
             // 
-            this.rTextBox.Location = new System.Drawing.Point(56, 439);
+            this.rTextBox.Location = new System.Drawing.Point(56, 441);
             this.rTextBox.Name = "rTextBox";
             this.rTextBox.Size = new System.Drawing.Size(48, 20);
             this.rTextBox.TabIndex = 38;
+            this.rTextBox.Visible = false;
             // 
             // MainForm
             // 
@@ -480,10 +482,10 @@
             this.Controls.Add(this.hjX1Label);
             this.Controls.Add(this.hjX2TextBox);
             this.Controls.Add(this.hjX1TextBox);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.levelsButton);
             this.Controls.Add(this.addResultLabel);
             this.Controls.Add(this.addResultTextBox);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.dataButton);
             this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.resultGridView);
             this.Controls.Add(this.x1TextBox);
@@ -556,10 +558,10 @@
         private System.Windows.Forms.TextBox fxTextBox;
         private System.Windows.Forms.DataGridView resultGridView;
         private System.Windows.Forms.PictureBox pictureBox;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button dataButton;
         private System.Windows.Forms.TextBox addResultTextBox;
         private System.Windows.Forms.Label addResultLabel;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button levelsButton;
         private System.Windows.Forms.TextBox hjX1TextBox;
         private System.Windows.Forms.TextBox hjX2TextBox;
         private System.Windows.Forms.Label hjX1Label;

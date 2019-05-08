@@ -21,19 +21,12 @@ namespace optLab
     {
         MSScriptControl.ScriptControl sc;
         double picOffset = 0.125d;
-        //ABSOLUTE
-        Graphics picGraphics;
-        PicPainter picPainter;
-        //--------
         Bitmap levels;
 
         public MainForm()
         {
             InitializeComponent();
             sc = new MSScriptControl.ScriptControl { Language = "VBScript" };
-            picGraphics = pictureBox.CreateGraphics();
-            pictureBox.Size = new Size(500, 500);
-            picPainter = new PicPainter(picGraphics, pictureBox.Width, pictureBox.Height, picOffset);
         }
 
         private void MakeButton_Click(object sender, EventArgs e)
@@ -67,7 +60,6 @@ namespace optLab
         {
             var image = new Bitmap(levels);
             var picPainter = new PicPainter(Graphics.FromImage(image), pictureBox.Width, pictureBox.Height, picOffset);
-            //picPainter.ClearGraphics();
             var minFx = Double.MaxValue;
             var minX1 = -1d;
             var minX2 = -1d;
@@ -155,9 +147,7 @@ namespace optLab
             x1TextBox.Text = Math.Round(minX1, 2).ToString();
             x2TextBox.Text = Math.Round(minX2, 2).ToString();
             for (var i = 0; i < allFx.Count; i++)
-                allFx[i] = Math.Round(allFx[i], 2);
-            //MakeLines(allFx, allX1, allX2, botBorder, upBorder, offset);
-            //picPainter.DrawCoordinateLines(botBorder, upBorder, offset, size, deltaX);          
+                allFx[i] = Math.Round(allFx[i], 2);        
             pictureBox.Image = image;
         }
 
@@ -165,7 +155,6 @@ namespace optLab
         {
             var image = new Bitmap(levels);
             var picPainter = new PicPainter(Graphics.FromImage(image), pictureBox.Width, pictureBox.Height, picOffset);
-            //picPainter.ClearGraphics();
             var fxList = new List<double>();
             var fx = Double.MaxValue;
             var x1 = -1d;
@@ -229,21 +218,14 @@ namespace optLab
             x1TextBox.Text = x1.ToString();
             x2TextBox.Text = x2.ToString();
             addResultTextBox.Text = pointCount.ToString();
-            //MakeLines(allFx, allX1, allX2, botBorder, upBorder, offset);
-            //picPainter.DrawCoordinateLines(botBorder, upBorder, offset, CalcSize(botBorder, upBorder, 1d) , 0.5d);
             pictureBox.Image = image;
 
         }
 
         private void HookeJeevesMethod(string expression)
         {        
-            //ADD IMAGE
             var image = new Bitmap(levels);
             var picPainter = new PicPainter(Graphics.FromImage(image), pictureBox.Width, pictureBox.Height, picOffset);
-            //picPainter.ClearGraphics();
-            var minFx = Double.MaxValue;
-            var minX1 = -1d;
-            var minX2 = -1d;
             if (!Double.TryParse(addInfoTextBox.Text, out var deltaX)
                 || !Double.TryParse(botBorderTextBox.Text, out var botBorder)
                 || !Double.TryParse(upBorderTextBox.Text, out var upBorder)
@@ -253,9 +235,7 @@ namespace optLab
                 MessageBox.Show("oops");
                 return;
             }
-            var isHorizontal = false;
             var horizontalVector = 0;
-            var isVertical = false;
             var verticalVector = 0;
             var size = CalcSize(botBorder, upBorder, deltaX);
             size++;
@@ -313,7 +293,6 @@ namespace optLab
                     deltaX /= 10;
                     continue;
                 }
-                //fx = newFx;
                 #region Pattern maching
                 while (true)
                 {
@@ -339,13 +318,8 @@ namespace optLab
 
         private void HookeJeevesMethodWithPenalty(string expression)
         {
-            //ADD IMAGE
             var image = new Bitmap(levels);
             var picPainter = new PicPainter(Graphics.FromImage(image), pictureBox.Width, pictureBox.Height, picOffset);
-            //picPainter.ClearGraphics();
-            var minFx = Double.MaxValue;
-            var minX1 = -1d;
-            var minX2 = -1d;
             if (!Double.TryParse(addInfoTextBox.Text, out var deltaX)
                 || !Double.TryParse(botBorderTextBox.Text, out var botBorder)
                 || !Double.TryParse(upBorderTextBox.Text, out var upBorder)
@@ -356,9 +330,7 @@ namespace optLab
                 MessageBox.Show("oops");
                 return;
             }
-            var isHorizontal = false;
             var horizontalVector = 0;
-            var isVertical = false;
             var verticalVector = 0;
             var size = CalcSize(botBorder, upBorder, deltaX);
             size++;
@@ -408,7 +380,6 @@ namespace optLab
                     deltaX /= 10;
                     continue;
                 }
-                //fx = newFx;
                 #region Pattern maching
                 while (true)
                 {
@@ -433,35 +404,52 @@ namespace optLab
 
         private void methodComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Ugly, but ye
             if (methodComboBox.SelectedIndex == 0)
             {
                 addInfoLabel.Text = "deltaX";
                 addInfoLabel.Visible = true;
                 addInfoTextBox.Visible = true;
-                botBorderLabel.Visible = true;
-                botBorderTextBox.Visible = true;
-                upBorderLabel.Visible = true;
-                upBorderTextBox.Visible = true;
             }
             if (methodComboBox.SelectedIndex == 1)
             {
-                addInfoLabel.Text = "Шаги";
+                addInfoLabel.Text = "Кол-во";
                 addInfoLabel.Visible = true;
                 addInfoTextBox.Visible = true;
-                botBorderLabel.Visible = true;
-                botBorderTextBox.Visible = true;
-                upBorderLabel.Visible = true;
-                upBorderTextBox.Visible = true;
+            }
+            if (methodComboBox.SelectedIndex == 2)
+            {
+                addInfoLabel.Text = "Шаг";
+                addInfoLabel.Visible = true;
+                addInfoTextBox.Visible = true;
+                hjX1Label.Visible = true;
+                hjX1TextBox.Visible = true;
+                hjX2Label.Visible = true;
+                hjX2TextBox.Visible = true;
+            }
+            if (methodComboBox.SelectedIndex == 3)
+            {
+                addInfoLabel.Text = "Шаг";
+                addInfoLabel.Visible = true;
+                addInfoTextBox.Visible = true;
+                hjX1Label.Visible = true;
+                hjX1TextBox.Visible = true;
+                hjX2Label.Visible = true;
+                hjX2TextBox.Visible = true;
+                rLabel.Visible = true;
+                rTextBox.Visible = true;
             }
             if (methodComboBox.SelectedIndex != 3)
             {
                 rLabel.Visible = false;
                 rTextBox.Visible = false;
             }
-            if (methodComboBox.SelectedIndex == 3)
+            if (methodComboBox.SelectedIndex < 2)
             {
-                rLabel.Visible = true;
-                rTextBox.Visible = true;
+                hjX1Label.Visible = false;
+                hjX1TextBox.Visible = false;
+                hjX2Label.Visible = false;
+                hjX2TextBox.Visible = false;
             }
         }
 
@@ -495,13 +483,7 @@ namespace optLab
             return limits;
         }
 
-        /// <summary>
-        /// REMAKE
-        /// </summary>
-        /// <param name="limits"></param>
-        /// <param name="x1"></param>
-        /// <param name="x2"></param>
-        /// <returns></returns>
+        //Fix
         private bool CalcLimits(object[,] limits, double x1, double x2)
         {
             for (var i = 0; i < limits.GetLength(0); i++)
@@ -610,16 +592,6 @@ namespace optLab
 
         private int CalcSize(double botBorder, double upBorder, double deltaX) => (int)((Math.Abs(botBorder) + Math.Abs(upBorder)) / deltaX);
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            funcTextBox.Text = "-6*x1+2*x1^2-2*x1*x2+2*x2^2";
-            limitGridView.Rows.Add("x1", ">=", 0d);
-            limitGridView.Rows.Add("x2", ">=", 0d);
-            limitGridView.Rows.Add("x1+x2", "<=", 2d);
-            botBorderTextBox.Text = (-1d).ToString();
-            upBorderTextBox.Text = (4d).ToString();
-        }
-
         private void limitGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e) => limitGridView.Rows.RemoveAt(e.RowIndex);
 
         private string Normalize(string expression)
@@ -628,73 +600,6 @@ namespace optLab
                 expression = expression.Replace(i.ToString() + "x", i.ToString() + "*x");
             expression = expression.Replace("X", "x");
             return expression;
-        }
-
-        private void MakeLines(List<double> fx, List<double> x1, List<double> x2, double botBorder, double upBorder, double offset)
-        {           
-            var res = new Dictionary<double, List<int>>();
-            for(var i = 0; i < fx.Count; i++)
-            {
-                if (!res.Keys.Contains(fx[i]))
-                {
-                    res.Add(fx[i], new List<int> { i });
-                }
-                else
-                {
-                    res[fx[i]].Add(i);
-                }
-            }
-
-
-            foreach (var fun in res)
-            {
-                if (fun.Value.Count > 1)
-                {
-                    var alreadyDrawn = new List<int>();
-                    for (var i = 0; i < fun.Value.Count - 1; i++)
-                    {
-                        var minLength = double.PositiveInfinity;
-                        var index = -1;
-                        for (var j = 0; j < fun.Value.Count; j++)
-                        {
-                            if (i == j) continue;
-                            var _i = fun.Value[i];
-                            var _j = fun.Value[j];
-                            var firstPart = x1[_i] - x1[_j];
-                            var secondPart = x2[_i] - x2[_j];
-                            var length = Math.Sqrt(firstPart*firstPart + secondPart*secondPart);
-
-                            if (minLength > length & !alreadyDrawn.Contains(j))
-                            {
-                                index = j;
-                                minLength = length;
-                            }
-                        }
-                        if (index == -1) break;
-                        var iCoord = fun.Value[i];
-                        var jCoord = fun.Value[index];
-                        picPainter.DrawLine(x1[iCoord], x2[iCoord], x1[jCoord], x2[jCoord], botBorder, upBorder, offset, Pens.Red);
-                         
-                        alreadyDrawn.Add(index);
-
-                    }
-                }
-            }
-            //foreach (var fun in res)
-            //{
-            //    if (fun.Value.Count > 1)
-            //    {
-            //        for (var i = 0; i < fun.Value.Count - 1; i++)
-            //        {
-            //            for (var j = i + 1; j < fun.Value.Count; j++)
-            //            {
-            //                var _i = fun.Value[i];
-            //                var _j = fun.Value[j];
-            //                picPainter.DrawLine(x1[_i], x2[_i], x1[_j], x2[_j], botBorder, upBorder, offset);
-            //            }
-            //        }
-            //    }
-            //}
         }
 
         private Bitmap MakeLevels(List<double> fx, List<double> x1, List<double> x2, double botBorder, double upBorder, double offset, int width, int height, int size, double deltaX)
@@ -762,7 +667,7 @@ namespace optLab
             return bitmap;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void levelsButton_Click(object sender, EventArgs e)
         {
             var expression = funcTextBox.Text;
             if (!Double.TryParse(botBorderTextBox.Text, out var botBorder)
@@ -830,6 +735,16 @@ namespace optLab
             var image = MakeLevels(allFx, allX1, allX2, botBorder, upBorder, offset, pictureBox.Width, pictureBox.Height, size, deltaX);
             pictureBox.Image = image;
             levels = image;
+        }
+
+        private void dataButton_Click(object sender, EventArgs e)
+        {
+            funcTextBox.Text = "-6*x1+2*x1^2-2*x1*x2+2*x2^2";
+            limitGridView.Rows.Add("x1", ">=", 0d);
+            limitGridView.Rows.Add("x2", ">=", 0d);
+            limitGridView.Rows.Add("x1+x2", "<=", 2d);
+            botBorderTextBox.Text = (-1d).ToString();
+            upBorderTextBox.Text = (4d).ToString();
         }
     }
 }
