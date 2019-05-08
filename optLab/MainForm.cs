@@ -4,17 +4,6 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Linq;
 
-/*
- * TODO:
- * 1. Make only first step try-catch block
- * 2. Get limit one time for fun;
- * 3. Hide form for methods.
- * 4. _x1 and _x2 in Monte-Carlo Method
- * 4.1 List for Monte-Carlo Method (graphic)
- * 4.2 Remake fonts for resultGridView
- * 4.3 All draw logic to new class
-*/
-
 namespace optLab
 {
     public partial class MainForm : Form
